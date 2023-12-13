@@ -1,8 +1,7 @@
 import re
 
-def regexParse(line: str, restrictions: dict) -> int:
+def regexParse(line: str, restrictions: dict, regex: re.Pattern) -> int:
     gameIndex = re.match(r"Game (\d+):", line).group(1)
-    regex = re.compile(r"\d+ \w+")
     regexOutput = regex.findall(line)
 
     for entry in regexOutput:
@@ -20,9 +19,10 @@ def main():
     }
 
     counter = 0
+    regex = re.compile(r"\d+ \w+")
     with open("input.txt", "r") as file:
         for line in file:
-            counter += regexParse(line, restrictions)
+            counter += regexParse(line, restrictions, regex)
 
     print(f"Total sum: {counter}")
 
