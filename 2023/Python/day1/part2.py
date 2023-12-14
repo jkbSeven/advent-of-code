@@ -16,7 +16,6 @@ def findCalibrationValue(line: str) -> int:
     return (10 * first) + last
 
 def parseLine(line: str, regex: re.Pattern, substitutions: dict) -> str:
-    original = line
     regexOutput = regex.search(line)
     while regexOutput is not None:
         value = regexOutput.group(0)
