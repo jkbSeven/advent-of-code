@@ -29,11 +29,9 @@ def main():
 
     counter = 0
     for index, value in enumerate(lines):
-        regexOutput = regex.search(value)
-        while regexOutput is not None:
+        for regexOutput in regex.finditer(value):
             if isSurrounded(lines, linesCount, index, *regexOutput.span(), relativePositionsToCheck):
                 counter += int(regexOutput.group(0))
-            regexOutput = regex.search(value, regexOutput.end())
 
     print(f"The sum of all of the part numbers in the engine schematic: {counter}")
 
