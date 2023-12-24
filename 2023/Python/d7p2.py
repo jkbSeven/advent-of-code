@@ -8,10 +8,8 @@ def getType(hand):
 
     jokers = cards.pop("J", 0)
 
-    if len(cards) == 0:
+    if len(cards) < 2:
         highest = 5
-    elif len(cards) == 1:
-        highest = list(cards.values())[0]
     else:
         for quantity in cards.values():
             if quantity > highest:
